@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { puppyBowlApi } from "../api/puppyBowlApi";
-import playersSlice from "../features/players/playersSlice";
+import playersSlice from "../players/playersSlice";
 
 export const store = configureStore({
   reducer: {

@@ -1,14 +1,19 @@
 import React from "react";
-import Players from "./features/players/Players";
+import Players from "./players/Players";
+import Player from "./players/Player";
+import AddPlayers from "./players/addPlayers";
+import Navbar from "./features/navBar";
+
 import { Routes, Route } from "react-router-dom";
-import { useGetPlayersQuery, useGetPlayerQuery } from "./api/puppyBowlApi";
 
 function App() {
   return (
     <>
-      <h1>Puppy Bowl</h1>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Players />} />
+        <Route path="/players/:playerid" element={<Player />} />
+        <Route path="/addPlayer" element={<AddPlayers />}></Route>
       </Routes>
     </>
   );

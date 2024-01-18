@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { puppyBowlApi } from "../api/puppyBowlApi";
 
-const playerSlice = createSlice({
-  name: "player",
+const playersSlice = createSlice({
+  name: "players",
   initialState: [],
   extraReducers: (builder) => {
     builder.addMatcher(
-      puppyBowlApi.endpoints.getPlayer.matchFulfilled,
+      puppyBowlApi.endpoints.getPlayers.matchFulfilled,
       (state, { payload }) => {
         return payload.results;
       }
@@ -14,4 +14,4 @@ const playerSlice = createSlice({
   },
 });
 
-export default playerSlice.reducer;
+export default playersSlice.reducer;

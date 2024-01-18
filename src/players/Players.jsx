@@ -1,9 +1,11 @@
 import React from "react";
-import { useGetPlayersQuery } from "../../api/puppyBowlApi";
+import { Link } from "react-router-dom";
+import { useGetPlayersQuery } from "../api/puppyBowlApi";
+import { Button } from "@mui/material";
 
 const Players = () => {
   const { data, error, isLoading } = useGetPlayersQuery();
-  console.log(data);
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -22,12 +24,11 @@ const Players = () => {
                 src={player.imageUrl}
                 alt={player.name}
               />
+              <h3>Player Name: {player.name}</h3>
             </div>
-            <div className="player-details">
-              <h2>{player.name}</h2>
-              <p>{player.breed}</p>
-              <p>{player.status}</p>
-            </div>
+            <Link to={`/players/${player.id}`}>
+              <Button>Details</Button>
+            </Link>
           </div>
         ))}
     </div>
