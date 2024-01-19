@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
+import { useDeletePlayerMutation } from "../api/puppyBowlApi";
 
 const Player = () => {
   const { playerid } = useParams();
   const { data, error, isLoading } = useGetPlayerQuery(playerid);
+  const [deletePost] = useDeletePlayerMutation();
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -33,7 +35,7 @@ const Player = () => {
             <p>Breed: {data.data.player.breed}</p>
             <p>Status: {data.data.player.status} </p>
           </div>
-          <Button>
+          <Button onClick={() => deletePost(data.data.player.id)}>
             <DeleteIcon />
           </Button>
           <Link to={`/`}>

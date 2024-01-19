@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import { useAddPlayerMutation } from "../api/puppyBowlApi";
 
 const AddPlayers = () => {
+  const [addNewPlayer] = useAddPlayerMutation();
   const [formData, setFormData] = useState({
-    Name: "",
-    Breed: "",
-    Status: "",
+    name: "",
+    breed: "",
+    status: "",
     imageURL: "",
-    TeamID: "",
+    teamID: "",
   });
 
   const handleInputChange = (e) => {
@@ -19,70 +20,75 @@ const AddPlayers = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    puppyBowlApi(formData);
+    addNewPlayer(formData)
+      .unwrap()
+      .then(() => {})
+      .then((error) => {
+        console.log(error);
+      });
 
     setFormData({
-      Name: "",
-      Breed: "",
-      Status: "",
+      name: "",
+      breed: "",
+      status: "",
       imageURL: "",
-      TeamID: "",
+      teamID: "",
     });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div class="mb-3">
-        <label class="form-label">Name</label>
+      <div className="mb-3">
+        <label className="form-label">Name</label>
         <input
           type="text"
-          class="form-control"
-          name="Name"
-          value={formData.Name}
+          className="form-control"
+          name="name"
+          value={formData.name}
           onChange={handleInputChange}
         />
       </div>
       <div>
-        <label class="form-label">Breed</label>
+        <label className="form-label">Breed</label>
         <input
           type="text"
-          class="form-control"
-          name="Breed"
-          value={formData.Breed}
+          className="form-control"
+          name="breed"
+          value={formData.breed}
           onChange={handleInputChange}
         />
       </div>
       <div>
-        <label class="form-label">Status</label>
+        <label className="form-label">Status</label>
         <input
           type="text"
-          class="form-control"
-          name="Status"
-          value={formData.Status}
+          className="form-control"
+          name="status"
+          value={formData.status}
           onChange={handleInputChange}
         />
       </div>
       <div>
-        <label class="form-label">ImageURL</label>
+        <label className="form-label">ImageURL</label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           name="imageURL"
           value={formData.imageURL}
           onChange={handleInputChange}
         />
       </div>
       <div>
-        <label class="form-label">TeamID</label>
+        <label className="form-label">TeamID</label>
         <input
           type="text"
-          class="form-control"
-          name="TeamID"
-          value={formData.TeamID}
+          className="form-control"
+          name="teamID"
+          value={formData.teamID}
           onChange={handleInputChange}
         />
       </div>
-      <Button type="submit" class="btn btn-primary">
+      <Button type="submit" className="btn btn-primary">
         Submit
       </Button>
     </form>

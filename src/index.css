@@ -1,3 +1,15 @@
 .player-image {
-  height: 150px;
+  height: 120px;
+}
+/* Adjust the height and width of the Card component */
+.players .MuiCard-root {
+  height: 250px;
+  width: 250px;
+}
+
+/* Adjust the height and width of the CardMedia component */
+.players .MuiCardMedia-root {
+  height: 70%;
+  /* Adjust the shape of the picture */
+  object-fit: cover;
 }
