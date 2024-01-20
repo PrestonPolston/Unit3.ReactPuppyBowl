@@ -5,22 +5,33 @@ import { Button } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+
 import Typography from "@mui/material/Typography";
+
 import { CardMedia } from "@mui/material";
+
 const Players = () => {
   const { data, error, isLoading } = useGetPlayersQuery();
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
+
   if (error) {
     return <h1>Try Again Later...</h1>;
   }
 
   return (
-    <div className="players">
+    <div
+      className="players"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gridGap: "20px",
+      }}
+    >
       {data.data.players &&
         data.data.players.map((player) => (
-          <Card key={player.id} sx={{ Width: 275 }}>
+          <Card key={player.id} sx={{ width: "10%", paddingBottom: "10px" }}>
             <CardMedia
               component="img"
               height="14"
@@ -38,7 +49,7 @@ const Players = () => {
               <Typography variant="h5" component="div">
                 <CardActions>
                   <Link to={`/players/${player.id}`}>
-                    <Button>Details</Button>
+                    <Button variant="contained">Details</Button>
                   </Link>
                 </CardActions>
               </Typography>

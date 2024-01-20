@@ -1,3 +1,26 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 2%;
+  background-image: url("./puppybowl.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.NavBar {
+  background-color: darkgrey;
+  border: 1px solid darkgray;
+  border-radius: 0%;
+  margin-top: 0%;
+  height: 10%;
+}
+/* .searchBar {
+  justify-content: right !important;
+} */
 .player-image {
   height: 120px;
 }

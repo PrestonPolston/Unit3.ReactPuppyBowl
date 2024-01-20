@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 import { useDeletePlayerMutation } from "../api/puppyBowlApi";
+import Card from "@mui/material/Card";
 
 const Player = () => {
   const { playerid } = useParams();
@@ -22,8 +23,16 @@ const Player = () => {
   }
 
   return (
-    <div className="player">
-      <div key={data.data.player.id} className="player-card">
+    <div
+      className="player"
+      style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+      }}
+    >
+      <Card className="player-card" style={{ width: "100%", height: "10%" }}>
         <div className="player-image-container">
           <img
             className="player-image"
@@ -39,10 +48,10 @@ const Player = () => {
             <DeleteIcon />
           </Button>
           <Link to={`/`}>
-            <Button>Return</Button>
+            <Button variant="contained">Return</Button>
           </Link>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };
